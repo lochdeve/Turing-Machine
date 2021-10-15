@@ -1,0 +1,22 @@
+# Automata por estados finales 
+# epsilon esta representado por un .
+# Reconoce el lenguaje L = {ww^q2}, donde w^q2 es la cadena obtenida al invertir el orden de w.
+#	Palabras palindomas de tama�o par
+q0 q1 q2
+0 1
+0 1 S
+q0
+S
+q2
+q0 0 S q0 0 S
+q0 1 S q0 1 S
+q0 0 0 q0 0 0
+q0 0 1 q0 0 1
+q0 1 0 q0 1 0
+q0 1 1 q0 1 1
+q0 . S q1 S
+q0 . 0 q1 0
+q0 . 1 q1 1
+q1 0 0 q1 .
+q1 1 1 q1 .
+q1 . S q2 S
