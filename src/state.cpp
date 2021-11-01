@@ -1,3 +1,14 @@
+/*
+* University of La Laguna
+* Grade: Computer ingineering
+* Course: 4º
+* Subject: Complejidad Computacional
+* Turing Machine
+* Autor: Carlos Garcia Lezcano
+* Gmail: alu0101208268@ull.edu.es
+* File state.cpp: Contain the develop of the state methods.
+*/
+
 #include "../include/state.hpp"
 
 State::State() {
@@ -13,5 +24,5 @@ std::string State::getId() {
 }
 
 void State::write() {
-  std::cout << "State " << id_ << std::endl;
+  std::cout << id_ << std::endl;
 }

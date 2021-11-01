@@ -1,0 +1,42 @@
+# Ejemplo de una MT
+# numero menor de bs que de as
+q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11
+1 0
+1 0 .
+q0
+.
+q11
+q0 Y q0 Y R
+q0 0 q0 0 R
+q0 X q0 X R
+q0 1 q1 X L
+q1 X q1 X L
+q1 0 q1 0 L
+q1 1 q1 1 L
+q1 . q2 . L
+q2 1 q2 1 L
+q2 . q3 1 R
+q3 1 q3 1 R 
+q3 . q0 . R
+q0 . q4 . L
+q4 X q4 X L
+q4 Y q4 Y L
+q4 0 q5 Y L
+q4 . q9 . R
+q5 0 q5 0 L
+q5 X q5 X L
+q5 Y q5 Y L
+q5 . q6 . L
+q6 1 q6 1 L
+q6 . q7 . L
+q7 0 q7 0 L
+q7 . q8 0 R
+q8 0 q8 0 R
+q8 . q3 . R
+q9 X q9 . R
+q9 Y q9 . R
+q9 . q9 . L
+q9 1 q9 1 L
+q9 0 q10 0 L
+q10 0 q10 0 L
+q10 . q11 .R

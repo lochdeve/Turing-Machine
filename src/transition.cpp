@@ -1,10 +1,21 @@
+/*
+ * University of La Laguna
+ * Grade: Computer ingineering
+ * Course: 4º
+ * Subject: Complejidad Computacional
+ * Turing Machine
+ * Autor: Carlos Garcia Lezcano
+ * Gmail: alu0101208268@ull.edu.es
+ * File transition.cpp: Contain the develop of the transition methods.
+ */
+
 #include "../include/transition.hpp"
 
-Transition::Transition(State initial, char alfabetSymbol, char stackSymbol, State final, std::vector<char> newStackSymbols) {
+Transition::Transition(State initial, char tapeSymbol, char outputSymbol, State final, char movement) {
   initial_ = initial;
-  alfabetSymbol_ = alfabetSymbol;
-  stackSymbol_ = stackSymbol;
-  newStackSymbols_ = newStackSymbols;
+  tapeSymbol_ = tapeSymbol;
+  outputSymbol_ = outputSymbol;
+  movement_ = movement;
   final_ = final;
 }
 
@@ -12,15 +23,12 @@ void Transition::write() {
   std::cout << std::endl;
   std::cout << "Initial State: ";
   initial_.write();
-  std::cout << "Alfabet symbol: " << alfabetSymbol_ << std::endl;
-  std::cout << "Stack symbol: " << stackSymbol_ << std::endl;
+  std::cout << "Tape symbol: " << tapeSymbol_ << std::endl;
   std::cout << "Final State: ";
   final_.write();
-  std::cout << "New stack symbols: ";
-  for (size_t i = 0; i < newStackSymbols_.size(); i++) {
-    std::cout << newStackSymbols_[i] << " ";
-  }
-
+  std::cout << "Output Symbol: ";
+  std::cout << outputSymbol_ << std::endl;
+  std::cout << "Movement: " << movement_ << std::endl;
   std::cout << std::endl;
   std::cout << std::endl;
 }
