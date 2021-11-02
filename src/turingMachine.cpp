@@ -52,7 +52,9 @@ TuringMachine::TuringMachine(std::string fileName) {
   }
   lineNoComments.clear();
 
+  // Initial state
   std::getline(file, line);
+  checkState(line);
   initialState_ = State(line);
   currentState_ = initialState_;
 
@@ -67,6 +69,7 @@ TuringMachine::TuringMachine(std::string fileName) {
 
   // The set of states
   while (lineNoComments >> word) {
+    checkState(word);
     acceptanceStates_.push_back(State(word));
   }
 
@@ -74,11 +77,14 @@ TuringMachine::TuringMachine(std::string fileName) {
     lineNoComments.clear();
     std::string initial, symbol, tapeSymbol, finals, movement;
     lineNoComments << line;
-
     lineNoComments >> initial;
+    checkState(initial);
     lineNoComments >> symbol;
+    checkAlfabet(symbol[0], false);
     lineNoComments >> finals;
+    checkState(finals);
     lineNoComments >> tapeSymbol;
+    checkAlfabet(tapeSymbol[0], true);
     lineNoComments >> movement;
 
     transitions_.push_back(Transition(State(initial), symbol[0], tapeSymbol[0], State(finals), movement[0]));
@@ -201,4 +207,44 @@ void TuringMachine::showTape() {
     std::cout << *it << " ";
   }
   std::cout << std::endl;
+}
+
+/**
+ * This method verify if the state pass by parameter match with the description of the automaton 
+ */
+void TuringMachine::checkState(std::string candidate) {
+  bool exist = false;
+  for (size_t i = 0; i < states_.size(); i++) {
+    if (states_[i].getId() == candidate) {
+      exist = true;
+      break;
+    }
+  }
+  if (!exist) {
+    std::string error = "The state " + candidate + " from one of the transitions do not exist in this Automaton";
+    throw error;
+  }
+}
+
+/**
+ *Check if the stack symbol or the string symbol match with the description of the automaton 
+ */
+void TuringMachine::checkAlfabet(char candidate, bool tape) {
+  bool exist = false;
+  std::vector<char> alfabet = entryAlfabet_;
+  if (tape) {
+    alfabet = tapeAlfabet_;
+  }
+  for (size_t i = 0; i < alfabet.size(); i++) {
+    if (alfabet[i] == candidate || candidate == white_) {
+      exist = true;
+      break;
+    }
+  }
+  std::string candidatePrint = "";
+  candidatePrint += candidate;
+  if (!exist) {
+    std::string error = "The symbol " + candidatePrint + " from one of the transitions do not exist in this Automaton";
+    throw error;
+  }
 }

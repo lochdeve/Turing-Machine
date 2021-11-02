@@ -42,6 +42,8 @@ class TuringMachine {
   bool doTransition();
   bool isAcceptance();
   void showTape();
+  void checkState(std::string);
+  void checkAlfabet(char, bool);
   void write();
 };
 
