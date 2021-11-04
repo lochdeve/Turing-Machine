@@ -10,6 +10,10 @@
  */
 
 #include "../include/turingMachine.hpp"
+
+/**
+ * This method build the Turing Machine reading from a file with a specific format
+ */
 TuringMachine::TuringMachine(std::string fileName) {
   std::ifstream file(fileName);
   if (!file.is_open()) {
@@ -92,6 +96,11 @@ TuringMachine::TuringMachine(std::string fileName) {
 
   file.close();
 }
+
+/**
+ * This is a method that moves throw the differents states 
+ * to verify if the string y is accepted or to compute a problem by the Turing Machine
+ */
 void TuringMachine::runMachine(std::string string) {
   bool finish = false;
   for (size_t i = 0; i < string.size(); i++) {
@@ -140,7 +149,7 @@ bool TuringMachine::doTransition() {
         }
 
       } else if (transitions_[i].getMovement() == 'R') {
-        if (actualIndex_ >= tape_.size() - 1) {
+        if (actualIndex_ >= (int)tape_.size() - 1) {
           tape_.push_front(white_);
         } else {
           actualIndex_++;
@@ -163,6 +172,9 @@ bool TuringMachine::isAcceptance() {
   return false;
 }
 
+/**
+ * Show a resume of all states, alfabets... that forms the Turing Machine
+ */
 void TuringMachine::write() {
   std::cout << "States: " << std::endl;
   for (size_t i = 0; i < states_.size(); i++) {
@@ -200,6 +212,9 @@ void TuringMachine::write() {
   }
 }
 
+/**
+ * Show the tape
+ */
 void TuringMachine::showTape() {
   std::cout << "The final tape is: ";
 
