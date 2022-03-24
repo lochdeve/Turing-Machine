@@ -1,2 +1,2 @@
 # Turing-Machine
-Made by Carlos Garcia Lezcano
+This repository contain the code of a simulator of a Turing Machine
